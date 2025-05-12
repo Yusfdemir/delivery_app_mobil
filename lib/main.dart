@@ -1,4 +1,5 @@
 import 'package:delivery_app_mobil/src/pages/login/login.dart';
+import 'package:delivery_app_mobil/src/pages/register/register.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -17,7 +18,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       initialRoute: "/",
       getPages: [
-        GetPage(name: "/", page: ()=> LoginPage()),
+        GetPage(name: "/", page: ()=> RegisterPage()),
       ],
     );
   }
