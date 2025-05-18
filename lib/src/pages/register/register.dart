@@ -1,8 +1,10 @@
+import 'package:delivery_app_mobil/src/pages/register/registerConrtoller.dart';
 import 'package:delivery_app_mobil/src/widgets/customTextField.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class RegisterPage extends StatelessWidget {
-  const RegisterPage({super.key});
+  RegisterController con = Get.put(RegisterController());
 
   @override
   Widget build(BuildContext context) {
@@ -37,7 +39,7 @@ class RegisterPage extends StatelessWidget {
       child: Container(
         margin: EdgeInsets.only(left: 20),
         child: IconButton(
-          onPressed: (){}, 
+          onPressed: ()=>con.goToLoginPage(), 
           icon: Icon(Icons.arrow_back_ios,color: Colors.white,size: 28,)
         ),
       )
@@ -77,17 +79,17 @@ class RegisterPage extends StatelessWidget {
           children: [
             _textYourInfo(),
             const SizedBox(height: 20,),
-            CustomTextField(hintText: "Email", icon: Icons.email_outlined, iconColor: Colors.red),
+            CustomTextField(hintText: "Email", icon: Icons.email_outlined, iconColor: Colors.red,controller: con.emailController,),
             const SizedBox(height: 20,),
-            CustomTextField(hintText: "First Name", icon: Icons.person, iconColor: Colors.red),
+            CustomTextField(hintText: "First Name", icon: Icons.person, iconColor: Colors.red,controller: con.firstNameController,),
             const SizedBox(height: 20,),
-            CustomTextField(hintText: "Last Name", icon: Icons.person, iconColor: Colors.red),
+            CustomTextField(hintText: "Last Name", icon: Icons.person, iconColor: Colors.red,controller: con.lastNameController,),
             const SizedBox(height: 20,),
-            CustomTextField(hintText: "Phone", icon: Icons.phone, iconColor: Colors.red),
+            CustomTextField(hintText: "Phone", icon: Icons.phone, iconColor: Colors.red,controller: con.phoneController,),
             const SizedBox(height: 20,),
-            CustomTextField(hintText: "Password", icon: Icons.lock, iconColor: Colors.red,isPassword: true,),
+            CustomTextField(hintText: "Password", icon: Icons.lock, iconColor: Colors.red,isPassword: true,controller: con.passwordController,),
             const SizedBox(height: 20,),
-            CustomTextField(hintText: "Confirm Password", icon: Icons.lock, iconColor: Colors.red,isPassword: true,),
+            CustomTextField(hintText: "Confirm Password", icon: Icons.lock, iconColor: Colors.red,isPassword: true,controller: con.confirmPasswordController,),
             const SizedBox(height: 20,),
             _registerButton(context)
           ],
@@ -106,9 +108,7 @@ class RegisterPage extends StatelessWidget {
     return SizedBox(
       width: double.infinity,
       child: ElevatedButton(
-        onPressed: (){
-
-        },
+        onPressed: ()=> con.register(),
         style: ElevatedButton.styleFrom(
           padding: EdgeInsets.symmetric(vertical: 15,),
           backgroundColor: Colors.red.shade900,

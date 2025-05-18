@@ -1,7 +1,9 @@
+import 'package:delivery_app_mobil/src/pages/login/loginController.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class LoginPage extends StatelessWidget {
-  const LoginPage({super.key});
+  LoginController con = Get.put(LoginController());
 
   @override
   Widget build(BuildContext context) {
@@ -100,6 +102,7 @@ class LoginPage extends StatelessWidget {
   Widget _textFieldEmail(){
     return TextField(
       keyboardType:TextInputType.emailAddress,
+      controller: con.emailController,
       decoration: InputDecoration(
         prefixIcon: Icon(Icons.email_outlined,color: Colors.red,),
         labelText: "Email",
@@ -114,6 +117,7 @@ class LoginPage extends StatelessWidget {
   Widget _textFieldPassword(){
     return TextField(
       obscureText: true,
+      controller: con.passwordController,
       decoration: InputDecoration(
         prefixIcon: Icon(Icons.lock_outline,color: Colors.red,),
         labelText: "Password",
@@ -129,9 +133,7 @@ class LoginPage extends StatelessWidget {
     return SizedBox(
       width: double.infinity,
       child: ElevatedButton(
-        onPressed: (){
-
-        },
+        onPressed: ()=> con.login(),
         style: ElevatedButton.styleFrom(
           padding: EdgeInsets.symmetric(vertical: 15,),
           backgroundColor: Colors.red.shade900,
@@ -148,7 +150,7 @@ class LoginPage extends StatelessWidget {
     return Padding(
       padding:const EdgeInsets.only(bottom:30),
       child: GestureDetector(
-        onTap: (){},
+        onTap: ()=> con.goToRegisterPage(),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [

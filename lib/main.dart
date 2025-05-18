@@ -18,7 +18,8 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       initialRoute: "/",
       getPages: [
-        GetPage(name: "/", page: ()=> RegisterPage()),
+        GetPage(name: "/", page: ()=> LoginPage()),
+        GetPage(name: "/register", page: ()=> RegisterPage()),
       ],
     );
   }
